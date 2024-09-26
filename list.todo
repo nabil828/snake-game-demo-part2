@@ -1,0 +1,38 @@
+- Pygame Basics🐍
+    - Install `pygame` @done
+    - `import pygame` @done
+    - `pygame.init()` @done
+    - `surface = pygame.display.set_mode((800, 600))` @done
+    - `surface.fill((0, 0, 0))` @done
+    - `pygame.display.set_caption("Hello World!")` @done
+    - `pygame.display.flip()` @done
+    - `pygame.draw.rect()` @done
+    - Pygame Event loop @done
+
+
+- Classes and Objects @done
+    - game, snake, food @done
+
+- Snake walks! @done
+    - add update() for game and snake @done
+    - add direction to snake. great the direction enum @done
+    - slow down the snake by addig FPS @done
+
+- Snake eats! @done
+    - replace x, y for a snake with segmenets. @done
+    - update the snake draw(): draw all the segnemnts @done
+    - update the snake update() @done
+        - update all the segments except the head @done
+        - update the head @done
+        - test so far by creating a snake of size 3 @done
+        - detect collision with food, @done
+            - Increase the size of snake by one @done
+            - change the location of the food @done
+
+- Game over if we hit the wall or the snake itself @done
+    - quit the game vs. rasie an exception @done
+    - guard the controls @done
+    - guard the draw() and update() @done
+    - restart the game @done
+
+- Display score
