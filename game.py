@@ -2,7 +2,21 @@ import pygame
 
 from direction import Direction
 from food import Food
-from snake import Snake
+from snake import Segment, Snake
+
+
+class Wall:
+    def __init__(self) -> None:
+        self.segments = [
+            Segment(400, 400),
+            Segment(400, 440),
+            Segment(400, 480),
+            Segment(400, 520),
+        ]
+
+    def draw(self, screen):
+        for segment in self.segments:
+            pygame.draw.rect(screen, (52, 50, 168), (segment.x, segment.y, 40, 40))
 
 
 class Game:
@@ -15,6 +29,7 @@ class Game:
         # game objects
         self.snake = Snake()
         self.food = Food()
+        self.wall = Wall()
 
     def run(self):
         running = True
@@ -34,13 +49,15 @@ class Game:
                         self.snake.direction = Direction.LEFT
                     elif event.key == pygame.K_RIGHT and not pause:
                         self.snake.direction = Direction.RIGHT
+                    elif event.key == pygame.K_a and not pause:
+                        self.snake.auto_pilot = True
                     elif event.key == pygame.K_SPACE:
                         pause = False
                         self.snake = Snake()
 
             try:
                 if not pause:
-                    self.snake.update(self.food)
+                    self.snake.update(self.food, self.wall)
                     self.draw()
             except Exception:
                 self.display_game_over()
@@ -52,8 +69,9 @@ class Game:
     def draw(self):
         # Game Logic Here
         self.screen.fill((255, 255, 255))
-        self.food.draw(self.screen)
         self.snake.draw(self.screen)
+        self.food.draw(self.screen)
+        self.wall.draw(self.screen)
         pygame.display.flip()
 
     def display_game_over(self):

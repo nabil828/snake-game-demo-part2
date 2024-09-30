@@ -35,4 +35,16 @@
     - guard the draw() and update() @done
     - restart the game @done
 
+- - Auto-pilot
+    - Add keyboard controls @done
+    - Modify the `Snake` update()
+        - update the direction of the head based on the auto-pilot path
+            - find a path using BFS path finding algorithm
+                - you might need `find_neighbors` helper function
+                - you might need `find_valid_neighbor` helper function
+            - follow the path based on the direction of the first two segments. This will only change the direction of th head
+    
+    - Modify the `Snake` draw() to draw
+        - visited segments
+        - final path
 - Display score
